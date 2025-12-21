@@ -3,7 +3,7 @@ import React from "react";
 import './index.css'
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Navigate, Routes } from "react-router";
+import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import TrendingMoviesPage from "./pages/trendingMoviesPage";
@@ -35,7 +35,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <SiteHeader />
+       <SiteHeader />
         <MoviesContextProvider>
           <Routes>
             <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import LoginPage from "./pages/loginPage";
