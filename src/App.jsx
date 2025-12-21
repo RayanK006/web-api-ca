@@ -6,6 +6,9 @@ import SignupPage from "./pages/signupPage";
 import HomePage from "./pages/homePage";
 import StartPage from "./pages/startPage";
 import ProfilePage from "./pages/profilePage";
+import Header from "./components/SiteHeader";
+import AuthContextProvider from "./contexts/authContext";
+import ProtectedRoutes from "./protectedRoutes";
 import './App.css';
 
 const queryClient = new QueryClient({
@@ -22,18 +25,24 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className="container">
-          <h1>Tasky</h1>
-          <Routes>
-            <Route path="/" element={< StartPage />} />
-            <Route path="/login" element={< LoginPage />} />
-            <Route path="/signup" element={< SignupPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/profile" element={< ProfilePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </div>
+        <AuthContextProvider>
+          <div className="container">
+            <Header />
+            <Routes>
+              <Route path="/" element={< StartPage />} />
+              <Route path="/home" element={< HomePage />} />
+              <Route path="/login" element={< LoginPage />} />
+              <Route path="/signup" element={< SignupPage />} />
+              <Route path="/profile" element={< ProfilePage />} />
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/tasks" element={< TasksPage />} />
+              </Route>
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
+          </AuthContextProvider>
       </BrowserRouter>
+      
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

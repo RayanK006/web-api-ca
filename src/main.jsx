@@ -15,6 +15,9 @@ import NowPlayingMoviesPage from "./pages/nowplayingMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
 import StartPage from "./pages/startPage";
+import LoginPage from "./pages/loginPage";
+import SignUpPage from "./pages/signupPage";
+import ProfilePage from "./pages/profilePage";
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
@@ -43,6 +46,9 @@ const App = () => {
             <Route path="/movies/now_playing" element={<NowPlayingMoviesPage />} /> 
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<StartPage />}/>
+            <Route path="/login" element={<LoginPage />}/>
+            <Route path="/signup" element={<SignUpPage/>}/>
+            <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/home" element={<HomePage />} />
             <Route path="*" element={ <Navigate to="/" /> } />
             <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
@@ -54,5 +60,5 @@ const App = () => {
   );
 };
 
-const rootElement = createRoot( document.getElementById("root") )
+const rootElement = createRoot( document.getElementById("root"))
 rootElement.render(<App />);
